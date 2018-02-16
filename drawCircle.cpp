@@ -51,7 +51,10 @@ vector<vector<char> > Raster(int radius, int scale){
 		can[cord_y][cols-1-cord_x]='*';
 		
 		//reflection in 3rd quadrant
-		can[rows-cord_y-1][cols-1-cord_x]='*';	
+		can[rows-cord_y-1][cols-1-cord_x]='*';
+		
+		//break when circle has already been drawn	
+		if(cord_y>=mid_v){break;}	
 	}
 	return can;
 }
@@ -70,7 +73,7 @@ void Draw(vector<vector<char> > & vec){
 
 int main(){
 	vector<vector<char> > canvas;
-	canvas=Raster(10,1);
+	canvas=Raster(10,2);
 	Draw(canvas);
 	cout<<"\n";
 	return 0;
