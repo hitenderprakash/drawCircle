@@ -10,22 +10,20 @@ vector<vector<char> > Raster(int radius, int scale){
 		return temp;
 	}
 	int rows=2*radius*scale +1;
-	int cols=2*radius*scale +1;
+	int cols=2*2*radius*scale +1;
 	int mid_h=cols/2;
 	int mid_v=rows/2;
 	vector<vector<char> > can(rows,vector<char>(cols,' '));
 	
-	for(int i=mid_h;i<cols;i++){
+	for(int i=mid_h;i<cols;i=i+2){
 		int cord_x=i;
 		int cord_y;
 		
-		int x=i-mid_h;
+		int x=(i-mid_h)/2;
 		for(int j=0;j<=mid_v;j++){			
 			int y=mid_v-j;
 			if(y*y+x*x ==radius*radius){
 				cord_y=j;
-				cout<<"y: "<<y<<" x: "<<x<<" r; "<<radius;
-				cout<<"\n"<<" cord_y: "<<cord_y<<" cord_x: "<<cord_x;
 				break;
 			}
 			else if(y*y+x*x >(radius*radius)){
@@ -40,7 +38,8 @@ vector<vector<char> > Raster(int radius, int scale){
 				
 				cord_y=(delta1<=delta2)? j:j-1;
 				break;
-			}			
+			}	
+					
 		}
 		//mark the coordinate in matrix
 		//in matrix y axis is along rows and x-axis along colum
@@ -52,7 +51,7 @@ vector<vector<char> > Raster(int radius, int scale){
 		can[cord_y][cols-1-cord_x]='*';
 		
 		//reflection in 3rd quadrant
-		can[rows-cord_y-1][cols-1-cord_x]='*';		
+		can[rows-cord_y-1][cols-1-cord_x]='*';	
 	}
 	return can;
 }
@@ -65,14 +64,13 @@ void Draw(vector<vector<char> > & vec){
 		cout<<"\n";
 		for(int j=0;j<cols;j++){
 			cout<<vec[i][j];
-			//cout<<"*";
 		}
 	}
 }
 
 int main(){
 	vector<vector<char> > canvas;
-	canvas=Raster(20,1);
+	canvas=Raster(10,1);
 	Draw(canvas);
 	cout<<"\n";
 	return 0;
