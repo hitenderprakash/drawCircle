@@ -11,17 +11,17 @@ Date: Feb 17, 2018
 using namespace std;
 
 int main(){
-    Raster circle(50, 40);
-    circle.set_circle_param(45,20,10);
+    Raster circle(30, 16);
+    circle.set_circle_param(18,8,6);
     circle.drawCircle();
     circle.dispay_Circle();
 
     //test resize dimensions
-    //circle.resize_RasterDimensions(60,40);
+    //circle.resize_RasterDimensions(20,16);
     //circle.dispay_Circle();
 
     //test center relocation
-    circle.relocate_Center(20,20);
+    circle.relocate_Center(10,8);
     circle.dispay_Circle();
 
     return 0;
