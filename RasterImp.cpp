@@ -13,7 +13,9 @@ Date: Feb 17, 2018
 //number of pixels along x-axis are double
 //actually it gives better results if we scale it by 1.5 but floats are not allowed
 Raster::Raster(int dimx,int dimy):intm_DimX(2*dimx),intm_DimY(dimy){
-    //do nothing, implicit initialization
+    orig_X=-1;
+    orig_Y-=1;
+    radius=0;
 }
 
 //set circle parameters
@@ -25,7 +27,7 @@ Raster::Raster(int dimx,int dimy):intm_DimX(2*dimx),intm_DimY(dimy){
 //radius is not valid  -3
 int Raster::set_circle_param(int x, int y, int r){
 
-    if(x<0 || x> intm_DimX){
+    if(x<0 || 2*x> intm_DimX){
         return -1;
     }
     if(y<0 || y> intm_DimY){
@@ -34,7 +36,7 @@ int Raster::set_circle_param(int x, int y, int r){
     if(r<=0){
         return -3;
     }
-    orig_X=x;
+    orig_X=2*x;
     orig_Y=y;
     radius=r;
 
