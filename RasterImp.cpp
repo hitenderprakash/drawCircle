@@ -47,7 +47,7 @@ int Raster::drawCircle(){
     for(int i=0;i<=radius;i++){
         x_cord=2*i; // two pixels along x-axis equal 1 -pixel along y-axis
         int j=radius;
-        while((j*j+i*i)>=(radius*radius)){
+        while(j>=0){
             if((j*j+i*i)==(radius*radius)){
                 y_cord=j;
                 break;
@@ -58,8 +58,8 @@ int Raster::drawCircle(){
             }
             //apply mid point approximation
             else if((j*j+i*i)<(radius*radius)){
-                int deltaUp=(radius*radius)-((i*i)+(j+1)*(j+1));
-                int deltaLow=(radius*radius)-((i*i)+(j*j));
+                int deltaUp=abs((radius*radius)-((i*i)+(j+1)*(j+1)));
+                int deltaLow=abs((radius*radius)-((i*i)+(j*j)));
 
                 j=(deltaUp<=deltaLow)?j+1:j;
                 y_cord=j;

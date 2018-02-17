@@ -11,8 +11,8 @@ Date: Feb 17, 2018
 using namespace std;
 
 int main(){
-    Raster circle(50, 20);
-    circle.set_circle_param(10,10,5);
+    Raster circle(100, 40);
+    circle.set_circle_param(50,20,15);
     circle.drawCircle();
     circle.dispay_Circle();
     return 0;
