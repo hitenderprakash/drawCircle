@@ -9,8 +9,13 @@ vector<vector<char> > Raster(int radius, int scale){
 		vector<vector<char> > temp;
 		return temp;
 	}
+	//enable canvas scaling
 	int rows=2*radius*scale +1;
 	int cols=2*2*radius*scale +1;
+	
+	//enable radius scaling 
+	radius=scale*radius;
+	
 	int mid_h=cols/2;
 	int mid_v=rows/2;
 	vector<vector<char> > can(rows,vector<char>(cols,' '));
@@ -70,10 +75,22 @@ void Draw(vector<vector<char> > & vec){
 		}
 	}
 }
+void DrawBorder(vector<vector<char> > & vec){
+	int rows=vec.size();
+	if(rows==0){return;}
+	int cols=vec[0].size();
+	for(int i=0;i<rows;i++){
+		for(int j=0;j<cols;j++){
+			if((i==0||i==rows-1)&& vec[i][j]==' '){vec[i][j]='-';}
+			if((j==0||j==cols-1)&& vec[i][j]==' '){vec[i][j]='|';}
+		}
+	}
+}
 
 int main(){
 	vector<vector<char> > canvas;
-	canvas=Raster(10,2);
+	canvas=Raster(10,3);
+	//DrawBorder(canvas);
 	Draw(canvas);
 	cout<<"\n";
 	return 0;
