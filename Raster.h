@@ -36,6 +36,10 @@ public:
     int drawCircle();
 
     int dispay_Circle();
+
+    int resize_RasterDimensions(int new_DimX, int new_DimY);
+
+    int relocate_Center(int x, int y);
 };
 
 #endif

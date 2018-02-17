@@ -15,5 +15,14 @@ int main(){
     circle.set_circle_param(45,20,10);
     circle.drawCircle();
     circle.dispay_Circle();
+
+    //test resize dimensions
+    //circle.resize_RasterDimensions(60,40);
+    //circle.dispay_Circle();
+
+    //test center relocation
+    circle.relocate_Center(20,20);
+    circle.dispay_Circle();
+
     return 0;
 }

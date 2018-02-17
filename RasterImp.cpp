@@ -26,7 +26,6 @@ Raster::Raster(int dimx,int dimy):intm_DimX(2*dimx),intm_DimY(dimy){
 //y coordinate not valid -2
 //radius is not valid  -3
 int Raster::set_circle_param(int x, int y, int r){
-
     if(x<0 || 2*x> intm_DimX){
         return -1;
     }
@@ -124,5 +123,27 @@ int Raster::dispay_Circle(){
         }
     }
     cout<<"\n";
+    return 0;
+}
+
+int Raster::resize_RasterDimensions(int new_DimX, int new_DimY){
+    if(new_DimX<=0 || new_DimY<=0){
+        cout<<"\nNew Dimensions are invalid! Unsucessfull";
+        return -1;
+    }
+    intm_DimX=2*new_DimX;
+    intm_DimY=new_DimY;
+    return 0;
+}
+
+int Raster::relocate_Center(int x, int y){
+    if(x<0 || 2*x> intm_DimX){
+        return -1;
+    }
+    if(y<0 || y> intm_DimY){
+        return -2;
+    }
+    orig_X=2*x;
+    orig_Y=y;
     return 0;
 }
