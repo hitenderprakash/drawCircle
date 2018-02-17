@@ -2,20 +2,19 @@
 # makefile for compiling and running drawCircle program
 # hprakash@iu.edu, hitenderprakash@gmail.com
 #######################################################
+CC=g++ -std=c++11
+OPTS=
+INCS=
+LIBS=
 
-COMPILER= g++ 
-CFLAG= -std=c++11
-# "make" command will only compile the code
-all:
-	@$(COMPILER) drawCircle.cpp -o drawCircle.out $(CFLAG)
+%.o: %.cpp
+	$(CC) $(OPTS) $(INCS) -c $<
 
-# "make run" command will compile and run the code
-run:
-	@$(COMPILER) drawCircle.cpp -o drawCircle.out $(CFLAG)
-	@ ./drawCircle.out 
+drawCircle: main.o RasterImp.o
+	$(CC) $(OPTS) $(INCS) -o $@ $^  $(LIBS)
 
-# "make clean" will remove the executable. Redirection used to supress error on console	
+run: drawCircle
+	@./drawCircle
+
 clean:
-	@rm -rf *.out
-
-
+	rm -f drawCircle *.o
