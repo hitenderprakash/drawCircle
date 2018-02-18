@@ -16,10 +16,10 @@ int main(){
     //Driver code
 
     //welcome message ! comment this section and uncomment any of the test case and run command: "make run"
-
+    
     cout<<"\nWelcome to the circle drawing program";
-    cout<<"\nPlease go to main.cpp file and uncoment the code for a particular test case";
-    cout<<"\nrun 'make' again and run the executable to see the output";
+    cout<<"\nPlease go to main.cpp file and uncomment the code for running the desired test case";
+    cout<<"\nrun 'make' again and then execute the program as ./drawCircle";
     cout<<"\n";
 
 
@@ -29,6 +29,7 @@ int main(){
     //and draw the circle with its center at the middle of the raster and radius=min(length_of_console,width_of_console)
     //before running the program you can set your console at any size. Program will always make the circle to fit the screen
     //If code fail for some reason,  it will give a raster of default size (50,50)
+
     /*
     console c;
     int cols=c.getConsoleCols()/2; //2 pixels along x-axis
@@ -43,9 +44,8 @@ int main(){
     //Test Case 2:
     //Creating a raster with user provided dimensions
     /*
-    Raster circle(50,40);
-    //circle.resize_RasterDimensions(50,40);
-    circle.set_circle_param(35,20,10); //center(35,20) and radius=10 you should see a circle towards the right side
+    Raster circle(30,20);
+    circle.set_circle_param(22,10,6); //center(22,10) and radius=5 you should see a circle towards the right side
     circle.drawCircle();
     circle.dispay_Circle();
     */
@@ -53,9 +53,8 @@ int main(){
     //Test Case 3:
     //Draw a circle when only partial part of circle falls inside raster
     /*
-    Raster circle(50,40);
-    //circle.resize_RasterDimensions(50,40);
-    circle.set_circle_param(45,20,10); //center(45,20) and radius=10 you should see a partial circle towards the right side
+    Raster circle(30,20);
+    circle.set_circle_param(28,10,6); //center(28,10) and radius=6 you should see a partial circle towards the right side
     circle.drawCircle();
     circle.dispay_Circle();
     */
@@ -63,24 +62,26 @@ int main(){
     //Test Case 4:
     //Demo of Raster resize, we first draw a circle which falls partially inside Raster
     //then resize the Raster to increse its size and display the circle again such that it now falls within raster
+
     /*
-    Raster circle(50,40);
-    circle.set_circle_param(45,20,10); //center(45,20) and radius=10 you should see a partial circle towards the right side
+    Raster circle(30,20);
+    circle.set_circle_param(28,10,6); //center(28,10) and radius=6 you should see a partial circle towards the right side
     circle.drawCircle();
     circle.dispay_Circle();
-    circle.resize_RasterDimensions(60,40); //increase the circle dimensions
+    circle.resize_RasterDimensions(40,20); //increase the raster dimensions
     circle.dispay_Circle();
     */
 
     //Test Case 5:
     //Demo of relocating origin of circle, we first draw a circle which falls partially inside Raster
     //then relocate the origin and then display the circle again such that it now falls within raster
+
     /*
-    Raster circle(50,40);
-    circle.set_circle_param(45,20,10); //center(45,20) and radius=10 you should see a partial circle towards the right side
+    Raster circle(30,20);
+    circle.set_circle_param(28,10,6); //center(28,10) and radius=6 you should see a partial circle towards the right side
     circle.drawCircle();
     circle.dispay_Circle();
-    circle.relocate_Center(30,20); //move the origin of the circle towards left so circle shifts inside the raster
+    circle.relocate_Center(22,10); //move the origin of the circle towards left so circle shifts inside the raster
     circle.dispay_Circle();
     */
 

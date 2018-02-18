@@ -14,20 +14,19 @@ Date: Feb 16, 2018
 using namespace std;
 class Raster{
 private:
-    int intm_DimX;
-    int intm_DimY;
+    int intm_DimX; //raster length (along x-axies)
+    int intm_DimY; //raster width (along y-axis)
 
-    int orig_X;
-    int orig_Y;
+    int orig_X; //x coordinate of origin of circle
+    int orig_Y; //y coordinate of origin of circle
 
-    int radius;
+    int radius; //length of radius of circle
 
-    //this vector contains the relative difference of circle coordinates x,y from center coordinate
+    //pair<int,int> represents a point that lie on circumference
+    //with respect to its relative difference of x-cordinate and y coordinate from center respectively
     //we can stroe the absolute coordinate but that would complicate the resize and origin relocation functions
     //In this implimentation we can resize and relocate the center coordinate very easily (provided radius does not change)
-    //However the points stored in this vector can fall outside of the raster but display function will handle that
-
-    //pair<int,int> correspondsd difference of x-cordinate from center, difference of y coordinate from center respectively
+    //However the points stored in this vector can fall outside of the raster but display function will handle it.
     vector<pair<int,int>> mRaster;
 
     //we do  not want user to initialize object without providing dimensions therefor
@@ -35,27 +34,69 @@ private:
     Raster();
 
 public:
-    Raster(int dimx,int dimy);
 
-    //return 0 on success
-    //x coordinate not valid -1
-    //y coordinate not valid -2
-    //radius is not valid  -3
-    int set_circle_param(int x, int y,int r);
+    /*
+        Constructer
+        dimx: number of pixels (characters) along x-axis
+        dimy: number of pixels (characters) along y-axis
+        e.g Raster(50,40) will create a grid of length:50 and width: 40
+    */
+    Raster(int dimx, int dimy);
 
-    //This function does not actually render the circle on screen but just calculate all the circle points
-    //and store that in the mRaster vector
+    /*
+        Sets the parameters of a circle
+        origin_x: x coordinate of origin of circle
+        origin_y: y coordinate of origin of circle
+        radius: radius of circle
+        e.g set_circle_param( 40,30,10) will have center at (40,30) and radius =10
+    */
+    int set_circle_param(int origin_x, int origin_y, int radius);
+
+    /*
+        drawCircle will compute all the circle points and fill the mRaster vector
+        circle points do not contain absolute x and y coorninate values but it stores the relative difference of x and y coordinate w.r.t center
+        e.g (3,4) means the actual circle point is  (center.x + 3, center.y + 4)
+
+        return 0 on success
+        -1 in case of error (radius is not valid)
+    */
     int drawCircle();
 
-    //This function renders the circle on the console provided mRaster vector has already been filled with circle points
-    //By getting the difference of x,y coordinates with respect to the origin, it will find the pixel position on the screen
-    //Points falling outside of the raster are ignored
+
+    /*
+        dispay_Circle is responsible for rendering the circle on console
+        it calculate the absolute coordinates of the circle points
+        Not all points can lie within Raster grid, this funstion will ignore such points
+
+        return 0 on success
+        -1 , if raster dimensions are invalid (this should never happen, but still handling as every function should not rely on others for error handling)
+        -2 , if invalid center coordinates
+        -3 , if invalid radius
+    */
     int dispay_Circle();
 
-    //Will resize the raster dimensions if input parameters are valid
+    /*
+        Resize the Raster grid
+        new_DimX: new length of the raster
+        new_DimY: new width of the raster
+        ensures that new_DimX and new_DimY are valid
+        e.g Raster circle (40,30) //create grid of size 40x30
+        circle.resize_RasterDimensions(60,40) //now grid will be 60x40
+
+        return 0 on success
+        -1 if input new_DimX is invalid
+        -2 if input new_DimY is invalid
+    */
     int resize_RasterDimensions(int new_DimX, int new_DimY);
 
-    //will change the center coordinates of the circle
+    /*
+        shifts the origin of the circle to new position
+        relocate_Center(30,20) //will move the circle such that its center is (30,20)
+
+        return 0 on success
+        -1 if x-coordinate is invalid
+        -2 if y-coordinate is invalid
+    */
     int relocate_Center(int x, int y);
 };
 
