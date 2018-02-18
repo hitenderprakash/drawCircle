@@ -37,7 +37,7 @@ int Raster::set_circle_param(int x, int y, int radius){
     }
     orig_X=2*x;
     orig_Y=y;
-    this->radius=radius;
+    this->radius=radius; //using 'this->' as the function parameter has same name as class variable
 
     return 0;
 }
