@@ -8,10 +8,17 @@ Date: Feb 17, 2018
 #include <iostream>
 #include <vector>
 #include "Raster.h"
+#include "console.h"
 using namespace std;
 
 int main(){
-    Raster circle(30, 16);
+
+    //test code to get console properties
+    console c;
+    cout<<"\n"<<c.getConsoleRows();
+    cout<<"\n"<<c.getConsoleCols();
+    //
+    Raster circle(105, 30);
     circle.set_circle_param(18,8,6);
     circle.drawCircle();
     circle.dispay_Circle();

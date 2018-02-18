@@ -10,7 +10,7 @@ LIBS=
 %.o: %.cpp
 	$(CC) $(OPTS) $(INCS) -c $<
 
-drawCircle: main.o RasterImp.o
+drawCircle: main.o RasterImp.o console.o
 	$(CC) $(OPTS) $(INCS) -o $@ $^  $(LIBS)
 
 run: drawCircle
