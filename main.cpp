@@ -29,7 +29,7 @@ int main(){
     //and draw the circle with its center at the middle of the raster and radius=min(length_of_console,width_of_console)
     //before running the program you can set your console at any size. Program will always make the circle to fit the screen
     //If code fail for some reason,  it will give a raster of default size (50,50)
-
+    /*
     console c;
     int cols=c.getConsoleCols()/2; //2 pixels along x-axis
     int rows=c.getConsoleRows();
@@ -38,7 +38,7 @@ int main(){
     circle.set_circle_param(cols/2,rows/2,min(cols,rows)/2-1);
     circle.drawCircle();
     circle.dispay_Circle();
-
+    */
 
     //Test Case 2:
     //Creating a raster with user provided dimensions
