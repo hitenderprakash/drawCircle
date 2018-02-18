@@ -8,8 +8,7 @@
 #include <iostream>
 #include "console.h"
 
-//just in case the import of these linux specific header files fail on Windows
-//including them only for Linux
+//just in case the import of these linux/Windows based on plateform the code is compiled for
 #ifdef __linux__
     #include <sys/ioctl.h>
     #include <stdio.h>
@@ -22,7 +21,7 @@ using namespace std;
 
 console::console(){
     //default initialization
-    dimX=100;dimY=100;
+    dimX=50;dimY=50;
     #ifdef __linux__
         try{
             struct winsize _console;
@@ -31,16 +30,21 @@ console::console(){
             dimY=_console.ws_row;
         }
         catch(const std::exception& e){
-            //dimX=100;dimY=100;
+            //dimX=50;dimY=50;
         }
 
     #elif _WIN32
-        CONSOLE_SCREEN_BUFFER_INFO csbi;
-        int ret = GetConsoleScreenBufferInfo(GetStdHandle( STD_OUTPUT_HANDLE ),&csbi);
-        if(ret){
-            dimX=csbi.dwSize.X;
-            dimY=csbi.dwSize.Y;
-        }
+            try{
+                CONSOLE_SCREEN_BUFFER_INFO csbi;
+                int ret = GetConsoleScreenBufferInfo(GetStdHandle( STD_OUTPUT_HANDLE ),&csbi);
+                if(ret){
+                    dimX=csbi.srWindow.Right - csbi.srWindow.Left + 1;
+                    dimY=csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
+                }
+            }
+            catch(const std::exception& e){
+                //dimX=50;dimY=50;
+            }
     #endif
 }
 
