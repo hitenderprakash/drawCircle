@@ -31,6 +31,8 @@ console::console(){
         catch(const std::exception& e){
             //dimX=100;dimY=100;
         }
+
+    //#elif - code for another OS can be added here 
     #endif
 }
 

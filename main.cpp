@@ -15,10 +15,20 @@ int main(){
 
     //Driver code
 
+    //welcome message ! comment this section and uncomment any of the test case and run command: "make run"
+
+    cout<<"\nWelcome to the circle drawing program";
+    cout<<"\nPlease go to main.cpp file and uncoment the code for a particular test case";
+    cout<<"\nrun 'make' again and run the executable to see the output";
+    cout<<"\n";
+
+
+
     //Test Case 1
     //test that we can dynamically get the console window size  and on the basis of that we can create raster that covers the entire screen
     //and draw the circle with its center at the middle of the raster and radius=min(length_of_console,width_of_console)
     //before running the program you can set your console at any size. Program will always make the circle to fit the screen
+    //This feature works only on linux, for windlows it will give a raster of default size (100,100)
     /*
     console c;
     int cols=c.getConsoleCols()/2; //2 pixels along x-axis
@@ -96,9 +106,6 @@ int main(){
     circle.drawCircle();
     circle.dispay_Circle();
     */
-    cout<<"\nWelcome to the circle drawing program";
-    cout<<"\nPlease go to main.cpp file and uncoment the code for a particular test case";
-    cout<<"\nrun 'make' again and run the executable to see the output";
-    cout<<"\n";
+
     return 0;
 }
