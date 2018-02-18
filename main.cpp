@@ -14,12 +14,15 @@ using namespace std;
 int main(){
 
     //test code to get console properties
+    //by this way we can make circle always fit the screen
+    // screen may have any size
+    //resizing the screen after rendering may change the graphics
     console c;
-    cout<<"\n"<<c.getConsoleRows();
-    cout<<"\n"<<c.getConsoleCols();
-    //
-    Raster circle(105, 30);
-    circle.set_circle_param(18,8,6);
+    int cols=c.getConsoleCols()/2; //2 pixels along x-axis
+    int rows=c.getConsoleRows();
+
+    Raster circle(cols, rows);
+    circle.set_circle_param(cols/2,rows/2,min(cols,rows)/2-1);
     circle.drawCircle();
     circle.dispay_Circle();
 
@@ -28,8 +31,8 @@ int main(){
     //circle.dispay_Circle();
 
     //test center relocation
-    circle.relocate_Center(10,8);
-    circle.dispay_Circle();
+    //circle.relocate_Center(10,8);
+    //circle.dispay_Circle();
 
     return 0;
 }
