@@ -23,7 +23,7 @@ int main(){
     cout<<"\nRun 'make' to build the project";
     cout<<"\nExecute the program as './drawCircle'";
     cout<<"\n\n";
-
+    
 
 
     //TEST CASE: 1
@@ -139,6 +139,26 @@ int main(){
     //circle.set_circle_param(28,10,6); //center(28,10) and radius=6
     circle.drawCircle();
     circle.dispay_Circle(); //should see an error message
+    */
+
+    //TEST CASE: 9
+    //Radius is very large.
+
+    /*
+    Raster circle(30,20);
+    circle.set_circle_param(15,10,30); //center(15,10) and radius=30
+    circle.drawCircle();
+    circle.dispay_Circle(); //should print only broder as no circle point lie inside ratser
+    */
+
+    //TEST CASE: 10
+    //Radius is very small.
+
+    /*
+    Raster circle(30,20);
+    circle.set_circle_param(15,10,3); //center(15,10) and radius=1
+    circle.drawCircle();
+    circle.dispay_Circle(); //for radius 1, it prints diamond like shape
     */
 
 
