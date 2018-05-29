@@ -7,3 +7,7 @@ Functionality:
 3. Relocate the origin of the circle
 4. Draw partial circle if only a part of it falls within the raster region
 5. Dynamically gets the console window size.
+
+----------------------------------------------------
+Detailed documentation: drawCircle_documentation.pdf
+----------------------------------------------------
